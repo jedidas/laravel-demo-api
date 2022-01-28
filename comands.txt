@@ -1,0 +1,6 @@
+php artisan make:model Models/Tag -a
+
+
+
+php artisan make:seeder UsersTableSeeder
+php artisan migrate:fresh --seed
