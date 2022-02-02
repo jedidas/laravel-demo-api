@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use Throwable;
 //
@@ -72,7 +73,7 @@ class ProductController extends Controller
      * @param UpdateRequest $request
      * @return Factory|\Illuminate\Contracts\View\View
      */
-    public function index(Request $request)
+    public function index(ProductRequest $request)
     {
         return $this->addOptions($request, $this->model->getAll());
     }
@@ -115,12 +116,25 @@ class ProductController extends Controller
         try {
             $appends = $this->checkOptions($request);
             $response = $this->model->show($product)->setAppends($appends);
-            return ['data' => $response];
+            return response()->json(['data' => $response]);
         } catch (Throwable $e) {
             return response()->json(["message" => $e->getMessage()], 404);
         }
 
     }
+
+
+    public function showBySlug(Request $request, $slug)
+    {
+        try {
+            $appends = $this->checkOptions($request);
+            $response = $this->model->showBySlug($slug)->setAppends($appends);
+            return response()->json(['data' => $response]);
+        } catch (Throwable $e) {
+            return response()->json(["message" => $e->getMessage()], 404);
+        }
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -180,6 +194,11 @@ class ProductController extends Controller
             return response()->json(["message" => $e->getMessage()], 404);
         }
 
+    }
+
+    public function getVotesByUserId(Product $product, $userId)
+    {
+        return ['data' => $product->allVotes->where('user_id', $userId)];
     }
 
 }

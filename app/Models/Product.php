@@ -17,7 +17,7 @@ class Product extends Model
     // public $timestamps = false;
     // protected $guarded = ['id'];
     // protected $appends = [];
-    protected $fillable = ['name', 'slug', 'code', 'image', 'price', 'discount', 'active', 'description', 'brand_id'];
+    protected $fillable = ['name', 'slug', 'code', 'image', 'price', 'discount', 'active', 'speed', 'hp', 'passenger', 'transmission', 'description', 'brand_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -41,9 +41,19 @@ class Product extends Model
         return $this->where('id', $id)->where('active', true)->firstOrFail();
     }
 
+    public function showBySlug($slug)
+    {
+        return $this->where('slug', $slug)->where('active', true)->firstOrFail();
+    }
+
     public function getByBrandId(int $brand)
     {
         return $this->where('brand_id', $brand)->where('active', true);
+    }
+
+    public function getVotesByUserId($id, $userId)
+    {
+        return $this->votes()->get();
     }
 
     /*
@@ -53,6 +63,11 @@ class Product extends Model
     */
 
     public function votes()
+    {
+        return $this->hasMany('App\Models\ProductVote');
+    }
+
+    public function allVotes()
     {
         return $this->hasMany('App\Models\ProductVote');
     }

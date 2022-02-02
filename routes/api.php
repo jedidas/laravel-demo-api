@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,9 +23,14 @@ Route::get('users/{user}/favorites', 'FavoriteController@getByUserId')->name('us
 
 //products
 Route::resource('products', 'ProductController');
+//
+Route::get('products/{slug}/detail', 'ProductController@showBySlug')->name('products.show.slug');
+//
 Route::get('products/{product}/votes', 'ProductVoteController@getByProductId')->name('products.votes');
 Route::get('products/{product}/options', 'ProductOptionController@getByProductId')->name('products.options');
 Route::get('products/{product}/tags', 'ProductController@getTags')->name('products.tags');
+Route::get('products/{product}/votes/{user}', 'ProductController@getVotesByUserId')->name('products.votes.user');
+Route::get('products/{product}/votes/my-votes', 'ProductVoteController@getUserLoggedInVotes')->name('products.votes.logged.in');
 
 //brands
 Route::resource('brands', 'BrandController');
@@ -33,6 +39,7 @@ Route::get('brands/{brand}/products', 'ProductController@getByBrandId')->name('b
 //
 Route::resource('categories', 'CategoryController');
 Route::resource('products-votes', 'ProductVoteController');
+
 Route::resource('favorites', 'FavoriteController');
 Route::resource('tags', 'TagController');
 

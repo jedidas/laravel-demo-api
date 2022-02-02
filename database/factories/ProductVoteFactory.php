@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(ProductVote::class, function (Faker $faker) {
     return [
         'vote' => $this->faker->boolean($chanceOfGettingTrue = 50),
-        'user_id' => $this->faker->numberBetween(1, 120),
-        'product_id' => $this->faker->numberBetween(1, 300),
+        'user_id' => $this->faker->numberBetween(1, 7),
+        'product_id' => $this->faker->numberBetween(1, 7),
     ];
 });

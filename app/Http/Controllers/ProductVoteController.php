@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Http\Request;
+use Throwable;
 use App\Http\Requests\ProductVoteRequest as StoreRequest;
 use App\Http\Requests\ProductVoteRequest as UpdateRequest;
 use App\Models\ProductVote;
@@ -50,12 +53,17 @@ class ProductVoteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\ProductVote $productVotes
-     * @return array
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show(ProductVote $productVotes)
+    public function show(int $id)
     {
-        return ['data' => $productVotes];
+        try {
+            $response = $this->model->show($id);
+            return response()->json(['data' => $response]);
+        } catch (Throwable $e) {
+            return response()->json(["message" => $e->getMessage()], 404);
+        }
     }
 
     /**
@@ -98,4 +106,15 @@ class ProductVoteController extends Controller
     {
         return $this->model->getByProductId($id);
     }
+
+    public function getUserLoggedInVotes(Request $request, int $id)
+    {
+        $bearerToken = explode('|', $request->bearerToken(), 2)[0];
+        $user = User::where('email', $request->email)->first();
+        if ($user->tokens()->where('id', $bearerToken)->count() >= 1) {
+            return ['data' => $this->model->getUserLoggedInVotes($user->id, $id)];
+        }
+        return response()->json(["message" => "Unauthorised", "data" => null], 401);
+    }
+
 }

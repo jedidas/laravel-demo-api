@@ -20,7 +20,7 @@ class ProductVote extends Model
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = [
-        'vote' => 'boolean'
+        'vote' => 'boolean',
     ];
 
     /*
@@ -30,7 +30,17 @@ class ProductVote extends Model
     */
     public function getByProductId(int $id)
     {
-        return $this->where('product_id', $id)->paginate(env('PAGINATION_COUNT'));
+        return $this->where('product_id', $id)->get();
+    }
+
+    public function show(int $id)
+    {
+        return $this->where('id', $id)->firstOrFail();
+    }
+
+    public function getUserLoggedInVotes($userId, $id)
+    {
+        return $this->where('user_id', $userId)->where('product_id', $id)->count() >= 1 ? true : false;
     }
 
     /*

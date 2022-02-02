@@ -11,16 +11,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 120)->create();
-        factory(App\Models\Category::class, 20)->create();
-        factory(App\Models\Brand::class, 50)->create();
-        factory(App\Models\Product::class, 900)->create();
-        factory(App\Models\ProductVote::class, 2000)->create();
-        factory(App\Models\Favorite::class, 300)->create();
-        factory(App\Models\Tag::class, 120)->create();
-        factory(App\Models\ProductTag::class, 60)->create();
-        factory(App\Models\ProductOption::class, 500)->create();
-        factory(App\Models\ProductOptionItem::class, 4000)->create();
-        factory(App\Models\Comment::class, 5000)->create();
+        factory(App\User::class, 7)->create();
+        factory(App\Models\Category::class, 7)->create();
+        factory(App\Models\Brand::class, 7)->create();
+        factory(App\Models\Product::class, 7)->create();
+        factory(App\Models\ProductVote::class, 30)->create();
+        factory(App\Models\Favorite::class, 0)->create();
+        factory(App\Models\Tag::class, 5)->create();
+//        factory(App\Models\ProductTag::class, 40)->create();
+        factory(App\Models\ProductOption::class, 8)->create();
+        factory(App\Models\ProductOptionItem::class, 20)->create();
+        factory(App\Models\Comment::class, 20)->create();
     }
 }
