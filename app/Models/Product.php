@@ -130,7 +130,7 @@ class Product extends Model
 
     public function getOptionsAttribute()
     {
-        return $this->options()->get(['id', 'name', 'required', 'multiple', 'min_count', 'max_count', 'options', 'active']);
+        return $this->options()->get(['id', 'name', 'required', 'multiple', 'max_count', 'options', 'active']);
     }
 
     public function getCommentsAttribute()

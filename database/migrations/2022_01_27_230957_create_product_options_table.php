@@ -18,7 +18,6 @@ class CreateProductOptionsTable extends Migration
             $table->string('name', 255);
             $table->boolean('required')->default(false);
             $table->boolean('multiple');
-            $table->integer('min_count')->default(1);
             $table->integer('max_count')->default(1);
             $table->mediumText('options')->nullable();
             $table->boolean('active')->default(true);

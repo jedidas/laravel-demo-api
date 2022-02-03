@@ -17,7 +17,7 @@ class ProductOption extends Model
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $appends = ['items'];
-    protected $fillable = ['name', 'required', 'multiple', 'min_count', 'max_count', 'options', 'active', 'product_id'];
+    protected $fillable = ['name', 'required', 'multiple', 'max_count', 'options', 'active', 'product_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

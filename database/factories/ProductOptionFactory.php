@@ -11,7 +11,6 @@ $factory->define(ProductOption::class, function (Faker $faker) {
         'name' => $name,
         'required' => $this->faker->boolean($chanceOfGettingTrue = 50),
         'multiple' => $this->faker->boolean($chanceOfGettingTrue = 50),
-        'min_count' => $this->faker->numberBetween(1, 1),
         'max_count' => $this->faker->numberBetween(2, 4),
         'options' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'active' => true,
