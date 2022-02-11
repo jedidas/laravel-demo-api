@@ -12,7 +12,6 @@ $factory->define(ProductOptionItem::class, function (Faker $faker) {
         'price' => $this->faker->numberBetween(250, 5000),
         'image' => '',
         'active' => true,
-        'product_option_id' => $this->faker->numberBetween(1, 8),
+        'product_option_id' => $this->faker->numberBetween(1, 1200),
     ];
 });
-//['gasoline', 'door', 'rings', 'engine', 'cylinder_capacity', 'active', 'description', 'brand_id', 'brand_id'];

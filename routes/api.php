@@ -46,3 +46,15 @@ Route::resource('tags', 'TagController');
 //product-tags
 Route::resource('products-tags', 'ProductTagController');
 Route::get('product-tags/product/{product}', 'ProductTagController@getByProductId')->name('product-tags.product');
+
+Route::post('users', 'UserController@store');
+Route::get('users', 'UserController@index');
+
+Route::group([
+    'middleware' => 'api',
+], function ($router) {
+    Route::post('login', 'AuthApiController@login');
+    Route::post('logout', 'AuthApiController@logout');
+    Route::post('refresh', 'AuthApiController@refresh');
+    Route::post('me', 'AuthApiController@me');
+});

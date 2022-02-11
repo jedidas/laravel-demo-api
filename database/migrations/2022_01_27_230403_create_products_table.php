@@ -23,13 +23,8 @@ class CreateProductsTable extends Migration
             $table->double('price', 16, 2)->default(0.0);
             $table->double('discount')->default(0);
             $table->boolean('active')->default(true);
-
-            $table->integer('speed')->nullable();
-            $table->integer('hp')->nullable();
-            $table->integer('passenger')->nullable();
-            $table->string('transmission')->nullable();
-
             $table->longText('description');
+
             $table->bigInteger('brand_id')->unsigned()->nullable();
             $table->foreign('brand_id')->references('id')->on('brands');
 

@@ -13,7 +13,7 @@ $factory->define(ProductOption::class, function (Faker $faker) {
         'multiple' => $this->faker->boolean($chanceOfGettingTrue = 50),
         'max_count' => $this->faker->numberBetween(2, 4),
         'options' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-        'active' => true,
-        'product_id' => $this->faker->numberBetween(1, 7),
+        'active' => $this->faker->boolean($chanceOfGettingTrue = 50),
+        'product_id' => $this->faker->numberBetween(1, 900),
     ];
 });
