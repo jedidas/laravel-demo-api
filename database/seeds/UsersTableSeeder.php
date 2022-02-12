@@ -18,9 +18,11 @@ class UsersTableSeeder extends Seeder
         factory(App\Models\ProductVote::class, 400)->create();
         factory(App\Models\Favorite::class, 300)->create();
         factory(App\Models\Tag::class, 60)->create();
-        factory(App\Models\ProductTag::class, 450)->create();
+        factory(App\Models\ProductTag::class, 200)->create();
         factory(App\Models\ProductOption::class, 1200)->create();
         factory(App\Models\ProductOptionItem::class, 3600)->create();
         factory(App\Models\Comment::class, 900)->create();
+        factory(App\Models\Order::class, 50)->create();
+        factory(App\Models\OrderProduct::class, 250)->create();
     }
 }

@@ -1,6 +1,8 @@
 php artisan make:model Models/Tag -a
 
+php artisan make:model Models/OrderProduct -a
 
 
-php artisan make:seeder UsersTableSeeder
+
+php artisan make:seeder OrderTableSeeder
 php artisan migrate:fresh --seed

@@ -18,7 +18,7 @@ class Product extends Model
     // protected $guarded = ['id'];
     // protected $appends = [];
     protected $fillable = ['name', 'slug', 'code', 'image', 'price', 'discount', 'active', 'speed', 'hp', 'passenger', 'transmission', 'description', 'brand_id'];
-    // protected $hidden = [];
+     protected $hidden = ['pivot'];
     // protected $dates = [];
 
     public function __construct(array $attributes = [])

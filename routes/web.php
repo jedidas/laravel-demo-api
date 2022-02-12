@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\LikesStatusChangeEvent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,13 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/fire', function () {
+    event(new LikesStatusChangeEvent);
+    return "Fire";
+});
+
+Route::get('/test', function () {
+    return view('test');
 });

@@ -50,6 +50,10 @@ Route::get('product-tags/product/{product}', 'ProductTagController@getByProductI
 Route::post('users', 'UserController@store');
 Route::get('users', 'UserController@index');
 
+//products
+Route::resource('orders', 'OrderController');
+
+//
 Route::group([
     'middleware' => 'api',
 ], function ($router) {
